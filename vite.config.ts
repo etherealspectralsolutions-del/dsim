@@ -190,7 +190,7 @@ export default defineConfig({
   // still resolve assets on a deep load / refresh (paired with the vercel.json SPA
   // rewrite). The Electron desktop build sets ELECTRON=1 (see the `dist` script) to
   // keep the relative base needed under file:// — it routes by state, not URL.
-  base: process.env.ELECTRON === '1' ? './' : '/',
+  base: process.env.ELECTRON === '1' ? './' : (process.env.GITHUB_PAGES === 'true' ? '/dsim/' : '/'),
   // Vite 6 only answers requests whose Host header is localhost (DNS-rebinding
   // protection). A Cloudflare quick tunnel forwards the browser's request with the
   // tunnel hostname as Host, so without this every tunnelled page load is a 403
